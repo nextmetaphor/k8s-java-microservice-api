@@ -150,11 +150,13 @@ This will build a `nextmetaphor/alpine-java` Docker image, build the Java micros
 From the root repository directory, create the replication controller, using the provided `yaml` file.
 ```bash
 $ kubectl create -f k8s-definitions/java-microservice-api/java-microservice-api-1.0-rc.yaml
+
 replicationcontroller "java-microservice-api-1.0-rc" created 
 ```
 Similarly, create the service.
 ```bash
 $ kubectl create -f k8s-definitions/java-microservice-api/java-microservice-api-svc.yml
+
 service "java-microservice-api-svc" created
 ```
 Examine these files for the specific configuration.
@@ -163,6 +165,7 @@ Examine these files for the specific configuration.
 Simply use `curl` to hit the exposed service on the specified `NodePort`.
 ```bash
 $ curl -s http://$(minikube ip):30286/person/200 | json_pp
+
 {
    "age" : 37,
    "homeAddressModel" : {

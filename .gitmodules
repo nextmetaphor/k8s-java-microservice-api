@@ -1,0 +1,3 @@
+[submodule "dockerized-java-microservice-api"]
+	path = dockerized-java-microservice-api
+	url = https://github.com/nextmetaphor/dockerized-java-microservice-api.git

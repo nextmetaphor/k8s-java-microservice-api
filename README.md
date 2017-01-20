@@ -15,7 +15,7 @@ The instructions below detail the pre-requisite technologies; together with inst
 #### Clone and Initialise the Repository
 Clone this repository, then initialise the submodules; this needs to be done recursively.
 ```bash
-git submodule update --init --recursive
+$ git submodule update --init --recursive
 ```
 
 #### Start the Kubernetes Environment
@@ -33,6 +33,7 @@ To achieve this, it's as simple as running the command below:
  Examining the currently running Docker processes on the host macOS machine will reveal the Kubernetes components.
  ```bash
  $ docker ps
+ 
   CONTAINER ID        IMAGE                                                        COMMAND                  CREATED              STATUS              PORTS               NAMES
   41a9d6915fb6        gcr.io/google_containers/exechealthz-amd64:1.2               "/exechealthz '--c..."   About a minute ago   Up About a minute                       k8s_healthz.7bd33f3f_kube-dns-v20-m8zf8_kube-system_8dfb256b-de75-11e6-b7c8-62bffd1cd4e4_31548166
   410d0ddde58c        gcr.io/google_containers/kube-dnsmasq-amd64:1.4              "/usr/sbin/dnsmasq..."   About a minute ago   Up About a minute                       k8s_dnsmasq.a58c1183_kube-dns-v20-m8zf8_kube-system_8dfb256b-de75-11e6-b7c8-62bffd1cd4e4_d7accca6
@@ -44,12 +45,12 @@ To achieve this, it's as simple as running the command below:
   dd5058332b69        gcr.io/google_containers/pause-amd64:3.0                     "/pause"                 About a minute ago   Up About a minute                       k8s_POD.2225036b_kubernetes-dashboard-qhnvf_kube-system_8de5f5b1-de75-11e6-b7c8-62bffd1cd4e4_8fea42cd
  ```
 
-## Deployment
 #### Building the Java Microservice API Docker Image
 From within the `dockerized-java-microservice-api` subdirectory of the repository, build the microservice using the provided script:
 
 ```bash
 dockerized-java-microservice-api$ bash build.sh 
+
 Sending build context to Docker daemon 17.92 kB
 Step 1 : FROM alpine:latest
 latest: Pulling from library/alpine
@@ -145,7 +146,7 @@ Successfully built 9d40d7aaca37
 
 This will build a `nextmetaphor/alpine-java` Docker image, build the Java microservice code using gradle, then combine the two, building a `nextmetaphor/java-microservice-api` Docker image. 
 
-#### Deploy to Kubernetes
+## Deployment
 From the root repository directory, create the replication controller, using the provided `yaml` file.
 ```bash
 $ kubectl create -f k8s-definitions/java-microservice-api/java-microservice-api-1.0-rc.yaml
